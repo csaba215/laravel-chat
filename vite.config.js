@@ -6,8 +6,14 @@ export default defineConfig({
     plugins: [
         laravel({
             input: 'resources/js/app.jsx',
-            refresh: true,
         }),
         react(),
+        
     ],
+    server: {
+        host: "192.168.56.56",
+        watch: {
+          usePolling: true,
+        }
+    },
 });
