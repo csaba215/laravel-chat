@@ -13,6 +13,6 @@
         @vite('resources/js/app.jsx')
     </head>
     <body class="font-sans antialiased">
-        <div id="app"></div>
+        <div id="root"></div>
     </body>
 </html>
