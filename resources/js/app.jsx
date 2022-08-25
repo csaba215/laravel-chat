@@ -1,14 +1,14 @@
 import './bootstrap';
 import '../css/app.css';
-import React from 'react';
-import ReactDOM from 'react-dom';
+import { createRoot } from 'react-dom/client';
 import { store } from './store';
 import { Provider } from 'react-redux';
 import Chat from './Chat';
 
-ReactDOM.render(
+const container = document.getElementById('root');
+const root = createRoot(container); // createRoot(container!) if you use TypeScript
+root.render(
   <Provider store={store}>
     <Chat/>
   </Provider>,
-  document.getElementById('root')
-)
+);
