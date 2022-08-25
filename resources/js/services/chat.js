@@ -1,15 +1,16 @@
 // Need to use the React-specific entry point to import createApi
-import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
+import { createApi} from '@reduxjs/toolkit/query/react'
+import { axiosBaseQuery } from './axiosBaseQuery'
 
 // Define a service using a base URL and expected endpoints
 export const chatApi = createApi({
   reducerPath: 'chatApi',
-  baseQuery: fetchBaseQuery({ baseUrl: '/' }),
+  baseQuery: axiosBaseQuery({ baseUrl: '/' }),
   tagTypes: ['Chat'],
   
   endpoints: (builder) => ({
     getChatByGroupId: builder.query({
-      query: (id) => `api/getChat/${id}`,
+      query: (id) => ({ url: `api/getChat/${id}`, method: 'get' }),
       providesTags: (result, error, id) => [{ type: 'Chat', id }],
     }),
   }),
