@@ -20,7 +20,20 @@ class ChatController extends Controller
 
     public function getChat()
     {
-        return(['test'=>'a']);
+        return(['messages'=>
+        [
+            ['userid'=>1,
+                'msg' => 'hello',
+            ],
+            ['userid'=>2,
+            'msg' => 'hello2',
+            ],
+            ['userid'=>3,
+            'msg' => 'hello3',
+            ],
+        ]
+        ]
+    );
     }
 
 }

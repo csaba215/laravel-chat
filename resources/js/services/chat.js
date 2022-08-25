@@ -5,9 +5,12 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 export const chatApi = createApi({
   reducerPath: 'chatApi',
   baseQuery: fetchBaseQuery({ baseUrl: '/' }),
+  tagTypes: ['Chat'],
+  
   endpoints: (builder) => ({
     getChatByGroupId: builder.query({
       query: (id) => `api/getChat/${id}`,
+      providesTags: (result, error, id) => [{ type: 'Chat', id }],
     }),
   }),
 })
