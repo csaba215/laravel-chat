@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\ChatGroupResource;
 use App\Models\ChatGroup;
 use Illuminate\Http\Request;
 
@@ -36,7 +37,7 @@ class ChatController extends Controller
      */
     public function show(ChatGroup $chat)
     {
-        return $chat;
+        return new ChatGroupResource($chat);
     }
 
     /**
