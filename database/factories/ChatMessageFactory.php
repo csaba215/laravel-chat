@@ -17,7 +17,7 @@ class ChatMessageFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'message' => fake()->text(100)
         ];
     }
 }
