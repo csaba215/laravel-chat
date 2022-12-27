@@ -15,7 +15,7 @@ class ChatMessage extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function group()
+    public function chatGroup()
     {
         return $this->belongsTo(ChatGroup::class);
     }
