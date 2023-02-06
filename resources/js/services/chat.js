@@ -10,7 +10,7 @@ export const chatApi = createApi({
   
   endpoints: (builder) => ({
     getChatByGroupId: builder.query({
-      query: (id) => ({ url: `api/getChat/${id}`, method: 'get' }),
+      query: (id) => ({ url: `api/chat/${id}`, method: 'get' }),
       providesTags: (result, error, id) => [{ type: 'Chat', id }],
     }),
   }),
