@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ChatController;
+use App\Http\Controllers\UserController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -18,4 +19,9 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::apiResource('chat', ChatController::class);
+Route::post('/login', 'UserController@login');
+Route::post('/register', 'UserController@register');
+Route::get('/logout', 'UserController@logout');
+
+
+Route::middleware('auth:sanctum')->apiResource('chat', ChatController::class);
