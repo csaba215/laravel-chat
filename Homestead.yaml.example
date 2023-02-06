@@ -1,18 +1,16 @@
-ip: 192.168.56.56
-memory: 2048
-cpus: 2
-provider: virtualbox
+ip: 192.168.66.66
+memory: 4096
+cpus: 4
+provider: libvirt
 authorize: ~/.ssh/id_rsa.pub
 keys:
     - ~/.ssh/id_rsa
-folders:
-    -
-        map: .
-        to: /home/vagrant/code
 sites:
     -
-        map: homestead.test
-        to: /home/vagrant/code/public
+        map: laravel-chat.test
+        to: /vagrant/public
+        php: "8.2"
+        
 databases:
     - homestead
 features:
