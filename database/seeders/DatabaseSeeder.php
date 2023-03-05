@@ -15,15 +15,14 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-         \App\Models\User::factory()->create([
+        \App\Models\User::factory()->create([
             'name' => 'Szobonya Csaba',
             'email' => 'csaba@szobonya.com',
             'password' => Hash::make('password'),
         ]);
-        
-         $this->call([
+
+        $this->call([
             ChatSeeder::class,
         ]);
-
     }
 }

@@ -1,9 +1,10 @@
 <?php
 
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ChatController;
 use App\Http\Controllers\UserController;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Route;
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -20,8 +21,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::post('/login', [UserController::class, 'login']);
-Route::post('/register', [UserController::class,'register']);
-Route::get('/logout', [UserController::class,'logout']);
-
+Route::post('/register', [UserController::class, 'register']);
+Route::get('/logout', [UserController::class, 'logout']);
 
 Route::middleware('auth:sanctum')->apiResource('chat', ChatController::class);

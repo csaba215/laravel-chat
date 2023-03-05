@@ -2,14 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Log;
-use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
-
-
 
 class UserController extends Controller
 {
@@ -18,15 +15,16 @@ class UserController extends Controller
         $this->validator($request->all())->validate();
         $user = $this->create($request->all());
         $this->guard()->login($user);
+
         return response()->json([
             'user' => $user,
-            'message' => 'registration successful'
+            'message' => 'registration successful',
         ], 200);
     }
+
     /**
      * Get a validator for an incoming registration request.
      *
-     * @param  array  $data
      * @return \Illuminate\Contracts\Validation\Validator
      */
     protected function validator(array $data)
@@ -43,7 +41,6 @@ class UserController extends Controller
     /**
      * Create a new user instance after a valid registration.
      *
-     * @param  array  $data
      * @return \App\User
      */
     protected function create(array $data)
@@ -54,6 +51,7 @@ class UserController extends Controller
             'password' => Hash::make($data['password']),
         ]);
     }
+
     protected function guard()
     {
         return Auth::guard();
@@ -66,6 +64,7 @@ class UserController extends Controller
         if (Auth::attempt($credentials)) {
             // Authentication passed...
             $authuser = auth()->user();
+
             return response()->json(['message' => 'Login successful'], 200);
         } else {
             return response()->json(['message' => 'Invalid email or password'], 401);
@@ -75,6 +74,7 @@ class UserController extends Controller
     public function logout()
     {
         Auth::logout();
+
         return response()->json(['message' => 'Logged Out'], 200);
     }
 }

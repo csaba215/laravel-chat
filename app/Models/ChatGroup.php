@@ -4,13 +4,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\ChatMessage;
-use App\Models\User;
 
 class ChatGroup extends Model
 {
-    
     use HasFactory;
+
     /**
      * The attributes that are mass assignable.
      *
@@ -25,7 +23,7 @@ class ChatGroup extends Model
      */
     protected $hidden = [
         'created_at',
-        'updated_at'
+        'updated_at',
     ];
 
     /**
@@ -35,14 +33,14 @@ class ChatGroup extends Model
      */
     protected $with = [
         'chatMessages',
-        'users'
+        'users',
     ];
 
     public function chatMessages()
     {
         return $this->hasMany(ChatMessage::class);
     }
-    
+
     public function users()
     {
         return $this->belongsToMany(User::class);
