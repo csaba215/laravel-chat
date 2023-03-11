@@ -1,6 +1,6 @@
 export const sanctumConfig = {
     // Your application URL
-    apiUrl: "http://laravel-chat.test",
+    apiUrl: import.meta.env.VITE_APP_URL,
     // The following settings are URLS that need to be created in your Laravel application
     // The URL sanctum uses for the csrf cookie
     csrfCookieRoute: "sanctum/csrf-cookie",
